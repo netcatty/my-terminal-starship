@@ -1,0 +1,60 @@
+onboarding = false
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+# ── catppuccin mocha（与 wezterm colors/custom.lua 同源）────
+[theme.custom]
+accent = "#89b4fa"        # blue，与 wezterm 主蓝一致
+panel_bg = "reset"        # keep terminal background
+sidebar_bg = "#181825"    # mantle（侧边栏，同 wezterm new_tab_hover 底色）
+active_row_bg = "#313244" # surface0（侧边栏选中行）
+selection_bg = "#585b70"  # surface2（同 wezterm selection_bg）
+surface_dim = "#11111b"   # crust
+surface0 = "#313244"      # surface0
+surface1 = "#45475a"      # surface1
+overlay0 = "#6c7086"
+overlay1 = "#9399b2"
+text = "#cdd6f4"          # 同 wezterm foreground
+subtext0 = "#a6adc8"
+green = "#a6e3a1"
+teal = "#94e2d5"
+blue = "#89b4fa"
+mauve = "#cba6f7"
+yellow = "#f9e2af"
+peach = "#fab387"
+red = "#f38ba8"
+
+[keys]
+# Collapse/expand the sidebar: press the prefix (ctrl+b), then b.
+toggle_sidebar = "prefix+b"
+
+[ui.toast]
+delivery = "system"
+
+[ui.sound]
+enabled = false
+
+[ui]
+show_agent_labels_on_pane_borders = true
+tab_bar_position = "top"
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "hostname" },
+  { type = "datetime", format = "%H:%M" },
+  { type = "text", text = " " }
+]
+tab_bar_right_separator = " · "
+
+status_indicators = "dots"
+
+# ── 新 pane 的 shell ─────────────────────────────────────────────
+# herdr 默认在 Windows 上挑 Windows PowerShell 5.1(它不加载我们的提示符配置),
+# 这里显式指向便携版 pwsh:D:\program\develop\term\powershell\pwsh.exe
+# 其 AllUsersAllHosts profile(同目录 profile.ps1)渲染 starship
+# (主题 D:\data\config\starship.toml;$env:PROMPT_IMPL=omp 可切回 ..\omp 的 oh-my-posh)。
+# 换 Git Bash:把上面一行注释掉,启用下面那行,然后 `herdr server reload-config`。
+# (Git Bash 走 %USERPROFILE%\.config\git\git-prompt.sh,同一份 starship 主题;bash 下没有 cmd_duration)
+[terminal]
+default_shell = "D:\\program\\develop\\term\\powershell\\pwsh.exe"
+# default_shell = "D:\\program\\develop\\git\\bash\\bin\\bash.exe"
